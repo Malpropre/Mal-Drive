@@ -65,7 +65,7 @@ function init() {
   <dir class="titleBar_container">
     <div class="titleBar_avatar">
       <a class="titleBar_item" href="/">
-        <img src="https://cdn.jsdelivr.net/gh/5MayRain/ImageHosting/Blog/Website/avatar.png">
+        <img src="">
       </a>
     </div>
     <div class="titleBar_nav">
@@ -276,15 +276,15 @@ function list(path) {
     <ul class="mdui-list"> 
      <li class="mdui-list-item th"> 
       <div class="mdui-col-xs-12 mdui-col-sm-7">
-       文件
+       File
   <i class="mdui-icon material-icons icon-sort" data-sort="name" data-order="more">expand_more</i>
       </div> 
       <div class="mdui-col-sm-3 mdui-text-right">
-       修改时间
+       Modified Time
   <i class="mdui-icon material-icons icon-sort" data-sort="date" data-order="downward">expand_more</i>
       </div> 
       <div class="mdui-col-sm-2 mdui-text-right">
-       大小
+       Size
   <i class="mdui-icon material-icons icon-sort" data-sort="size" data-order="downward">expand_more</i>
       </div> 
       </li> 
@@ -293,7 +293,7 @@ function list(path) {
    <div class="mdui-row"> 
     <ul id="list" class="mdui-list"> 
     </ul> 
-    <div id="count" class="mdui-hidden mdui-center mdui-text-center mdui-m-b-3 mdui-typo-subheading mdui-text-color-blue-grey-500">共 <span class="number"></span> 项</div>
+    <div id="count" class="mdui-hidden mdui-center mdui-text-center mdui-m-b-3 mdui-typo-subheading mdui-text-color-blue-grey-500">Total <span class="number"></span> Item</div>
    </div>
   `;
     $('#content').html(content);
@@ -505,15 +505,15 @@ function render_search_result_list() {
     <ul class="mdui-list"> 
      <li class="mdui-list-item th"> 
       <div class="mdui-col-xs-12 mdui-col-sm-7">
-       文件
+       File
   <i class="mdui-icon material-icons icon-sort" data-sort="name" data-order="more">expand_more</i>
       </div> 
       <div class="mdui-col-sm-3 mdui-text-right">
-       修改时间
+       Modified Time
   <i class="mdui-icon material-icons icon-sort" data-sort="date" data-order="downward">expand_more</i>
       </div> 
       <div class="mdui-col-sm-2 mdui-text-right">
-       大小
+       Size
   <i class="mdui-icon material-icons icon-sort" data-sort="size" data-order="downward">expand_more</i>
       </div> 
       </li> 
@@ -522,7 +522,7 @@ function render_search_result_list() {
    <div class="mdui-row"> 
     <ul id="list" class="mdui-list"> 
     </ul> 
-    <div id="count" class="mdui-hidden mdui-center mdui-text-center mdui-m-b-3 mdui-typo-subheading mdui-text-color-blue-grey-500">共 <span class="number"></span> 项</div>
+    <div id="count" class="mdui-hidden mdui-center mdui-text-center mdui-m-b-3 mdui-typo-subheading mdui-text-color-blue-grey-500">Total <span class="number"></span> Item</div>
    </div>
   `;
     $('#content').html(content);
@@ -668,7 +668,7 @@ function onSearchResultItemClick(a_ele) {
     var cur = window.current_drive_order;
     var dialog = mdui.dialog({
         title: '',
-        content: '<div class="mdui-text-center mdui-typo-title mdui-m-b-1">正在获取目标路径...</div><div class="mdui-spinner mdui-spinner-colorful mdui-center"></div>',
+        content: '<div class="mdui-text-center mdui-typo-title mdui-m-b-1">Target path being acquired...</div><div class="mdui-spinner mdui-spinner-colorful mdui-center"></div>',
         // content: '<div class="mdui-spinner mdui-spinner-colorful mdui-center"></div>',
         history: false,
         modal: true,
@@ -688,23 +688,23 @@ function onSearchResultItemClick(a_ele) {
                 modal: true,
                 closeOnEsc: true,
                 buttons: [{
-                    text: '打开',
+                    text: 'Open',
                     onClick: function() {
                         window.location.href = href
                     }
                 }, {
-                    text: '新标签中打开',
+                    text: 'Open in a new tab',
                     onClick: function() {
                         window.open(href)
                     }
-                }, { text: '取消' }]
+                }, { text: 'Cancel' }]
             });
             return;
         }
         dialog.close();
         dialog = mdui.dialog({
-            title: '<i class="mdui-icon material-icons">&#xe811;</i>获取目标路径失败',
-            content: 'o(╯□╰)o 可能是因为该盘中并不存在此项！也可能因为没有把【与我共享】的文件添加到个人云端硬盘中！',
+            title: '<i class="mdui-icon material-icons">&#xe811;</i>Failed to get target path',
+            content: 'o(╯□╰)o It could be because it doesnt exist on that drive Or it could be because the -Share with me- file was not added to your personal cloud drive',
             history: false,
             modal: true,
             closeOnEsc: true,
@@ -778,7 +778,7 @@ function file_code(path) {
 <pre id="editor" ></pre>
 </div>
 <div class="mdui-textfield">
-  <label class="mdui-textfield-label">下载地址</label>
+  <label class="mdui-textfield-label">Download</label>
   <input class="mdui-textfield-input" type="text" value="${href}"/>
 </div>
 <a href="${href}" class="mdui-fab mdui-fab-fixed mdui-ripple mdui-color-theme-accent"><i class="mdui-icon material-icons">file_download</i></a>
@@ -846,10 +846,10 @@ function file_video(path) {
         .map(it => `<li class="mdui-menu-item"><a href="${it.href}" class="mdui-ripple">${it.text}</a></li>`)
         .join('');
     player_items += `<li class="mdui-divider"></li>
-                   <li class="mdui-menu-item"><a id="copy-link" class="mdui-ripple">复制链接</a></li>`;
+                   <li class="mdui-menu-item"><a id="copy-link" class="mdui-ripple">Copy Link</a></li>`;
     const playBtn = `
       <button class="mdui-btn mdui-ripple mdui-color-theme-accent" mdui-menu="{target:'#player-items'}">
-        <i class="mdui-icon material-icons">&#xe039;</i>外部播放器播放<i class="mdui-icon material-icons">&#xe5cf;</i>
+        <i class="mdui-icon material-icons">&#xe039;</i>External player playback<i class="mdui-icon material-icons">&#xe5cf;</i>
       </button>
       <ul class="mdui-menu" id="player-items">${player_items}</ul>`;
 
@@ -892,7 +892,7 @@ function file_video(path) {
   <br>${playBtn}
   <!-- 固定标签 -->
   <div class="mdui-textfield">
-    <label class="mdui-textfield-label">下载地址</label>
+    <label class="mdui-textfield-label">Download</label>
     <input class="mdui-textfield-input" type="text" value="${url}"/>
   </div>
   <div class="mdui-textfield">
@@ -905,18 +905,18 @@ function file_video(path) {
     $('#content').html(content);
     $('#copy-link').on('click', () => {
         copyToClipboard(url);
-        mdui.snackbar('已复制到剪切板!');
+        mdui.snackbar('Copied to clipboard!');
     });
 
     if (ext == 'm3u8') {
         const video = document.querySelector('video');
         const player = new Plyr(video, {
             i18n: {
-                speed: '速度',
-                normal: '正常',
-                quality: '质量',
-                captions: '字幕',
-                disabled: '禁用',
+                speed: 'Speed',
+                normal: 'Normal',
+                quality: 'Quality',
+                captions: 'Subtitles',
+                disabled: 'Disable',
             },
             captions: {
                 active: true,
@@ -941,11 +941,11 @@ function file_video(path) {
         const player = new Plyr('#plyr', {
             blankVideo: 'https://cdn.plyr.io/static/blank.mp4',
             i18n: {
-                speed: '速度',
-                normal: '正常',
-                quality: '质量',
-                captions: '字幕',
-                disabled: '禁用',
+                speed: 'Speed',
+                normal: 'Normal',
+                quality: 'Quality',
+                captions: 'Subtitles',
+                disabled: 'Disable',
             },
         });
         player.source = {
@@ -959,7 +959,7 @@ function file_video(path) {
             tracks: [{
                 kind: 'captions',
                 label: 'default',
-                srclang: 'cn',
+                srclang: 'en',
                 src: urlPath + '.vtt',
                 default: true,
             }, ],
@@ -1032,7 +1032,7 @@ function file_audio(path) {
   <br>
   <!-- 固定标签 -->
   <div class="mdui-textfield">
-    <label class="mdui-textfield-label">下载地址</label>
+    <label class="mdui-textfield-label">Download</label>
     <input class="mdui-textfield-input" type="text" value="${url}"/>
   </div>
   <div class="mdui-textfield">
@@ -1090,10 +1090,10 @@ function file_image(path) {
             <div class="mdui-container">
                 <div class="mdui-row-xs-2 mdui-m-b-1">
                     <div class="mdui-col">
-                        ${prev_child ? `<button id="leftBtn" data-filepath="${prev_child}" class="mdui-btn mdui-btn-block mdui-color-theme-accent mdui-ripple">上一张</button>` : `<button class="mdui-btn mdui-btn-block mdui-color-theme-accent mdui-ripple" disabled>上一张</button>`}
+                        ${prev_child ? `<button id="leftBtn" data-filepath="${prev_child}" class="mdui-btn mdui-btn-block mdui-color-theme-accent mdui-ripple">Previous</button>` : `<button class="mdui-btn mdui-btn-block mdui-color-theme-accent mdui-ripple" disabled>Previous</button>`}
                     </div>
                     <div class="mdui-col">
-                        ${next_child ? `<button id="rightBtn"  data-filepath="${next_child}" class="mdui-btn mdui-btn-block mdui-color-theme-accent mdui-ripple">下一张</button>` : `<button class="mdui-btn mdui-btn-block mdui-color-theme-accent mdui-ripple" disabled>下一张</button>`}
+                        ${next_child ? `<button id="rightBtn"  data-filepath="${next_child}" class="mdui-btn mdui-btn-block mdui-color-theme-accent mdui-ripple">Next</button>` : `<button class="mdui-btn mdui-btn-block mdui-color-theme-accent mdui-ripple" disabled>Next</button>`}
                     </div> 
                 </div>
             </div>
@@ -1113,7 +1113,7 @@ function file_image(path) {
     </div>
   <br>
   <div class="mdui-textfield">
-    <label class="mdui-textfield-label">下载地址</label>
+    <label class="mdui-textfield-label">Download</label>
     <input class="mdui-textfield-input" type="text" value="${url}"/>
   </div>
   <div class="mdui-textfield">
