@@ -25,14 +25,12 @@ function init() {
 
     // 搜索
     var search_bar = `
-                    <div class="titleBar_item search_bar">
-                        <form class="searchBar_form" method="get" action="/${cur}:search">
-                            <input type="text" name="q" placeholder="Search in current drive" value="${search_text}" />
-                        </form>
-                        <a class="titleBar_link searchBar_link" onclick="if($('.search_bar').hasClass('searchBar_link') && $('.searchBar_form>input').val()) $('.searchBar_form').submit();">
-                            <i class="mdui-icon material-icons"></i>
-                        </a>
-                    </div>`;
+<div class="titleBar_item search_bar">
+<form class="searchBar_form" method="get" action="/${cur}:search">
+<input name="q" type="text" placeholder="Search" value="${search_text}" />
+<button class="searchBar_link" onclick="if($('.search_bar').hasClass('searchBar_link') && $('.searchBar_form>input').val()) $('.searchBar_form').submit();">Search</button>
+</form>
+</div>`;
     // 盘
     var pan_bar = `
                     <div class="titleBar_item titleBar_pan">
