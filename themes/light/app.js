@@ -923,7 +923,7 @@ function file_video(path) {
             captions: {
                 active: true,
                 update: true,
-                language: 'en'
+                language: 'id'
             },
         });
 
@@ -959,10 +959,10 @@ function file_video(path) {
             }, ],
             poster: '//raw.githubusercontent.com/Malpropre/Mal-Drive/main/cover.jpg',
             tracks: [{
-                kind: 'captions',
-                label: 'default',
-                srclang: 'cn',
-                src: urlPath + '.vtt',
+                kind: 'Captions',
+                label: 'Default',
+                srclang: 'id',
+                src: urlPath + '.srt',
                 default: true,
             }, ],
         };
@@ -974,7 +974,7 @@ function file_video(path) {
         autoplay: false,
         theme: '#b7daff',
         loop: false,
-        lang: 'en',
+        lang: 'id',
         screenshot: true,
         hotkey: true,
         preload: 'auto',
@@ -1012,7 +1012,7 @@ function file_video(path) {
             defaultQuality: 0,
         },
         subtitle: {
-            url: urlPath + '.vtt',
+            url: urlPath + '.srt',
             type: 'webvtt',
             fontSize: '25px',
             bottom: '10%',
